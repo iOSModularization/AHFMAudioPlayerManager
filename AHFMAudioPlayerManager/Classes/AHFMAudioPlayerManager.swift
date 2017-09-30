@@ -10,7 +10,7 @@ import Foundation
 import AHFMModuleManager
 
 public struct AHFMAudioPlayerManager: AHFMModuleManager {
-    public static func register() {
+    public static func activate() {
         let objectStr = "AHAudioPlayer.AHAudioPlayerManager"
         guard let objectType = NSClassFromString(objectStr) else {
             fatalError("AHFMAudioPlayerServices register failed!")

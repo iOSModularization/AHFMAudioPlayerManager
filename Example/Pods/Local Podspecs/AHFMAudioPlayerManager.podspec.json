@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "summary": "A short description of AHFMAudioPlayerManager.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/ivsall2012/AHFMAudioPlayerManager",
+  "homepage": "https://github.com/iOSModularization/AHFMAudioPlayerManager",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,7 +12,7 @@
     "ivsall2012": "ivsall2012@gmail.com"
   },
   "source": {
-    "git": "https://github.com/ivsall2012/AHFMAudioPlayerManager.git",
+    "git": "https://github.com/iOSModularization/AHFMAudioPlayerManager.git",
     "tag": "0.1.0"
   },
   "platforms": {

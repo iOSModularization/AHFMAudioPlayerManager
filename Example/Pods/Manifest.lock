@@ -10,7 +10,7 @@ PODS:
     - UIDeviceExtension
   - AHFMDataTransformers (0.1.0):
     - SwiftyJSON
-  - AHFMModuleManager (0.1.1)
+  - AHFMModuleManager (0.2.0)
   - SDWebImage (4.1.0):
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
@@ -26,10 +26,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AHDataModel: b266f3a0a302d5aa4428f11dd789a4924ff76f1b
-  AHFMAudioPlayerManager: 62d7fe7f57c5d9f48652229db06b001add7b0398
+  AHFMAudioPlayerManager: f574957fbcef90a15a85731fd658e13ae9e2ca0d
   AHFMDataCenter: eee0c634b32328c9a34e8d7212a9fd5a6dd64aad
   AHFMDataTransformers: eafcb87a307fbd52ccd61917fa5de1aff6a7bd53
-  AHFMModuleManager: 41a0991b7c7e186d78c6b9a4c31c1702632cdb4d
+  AHFMModuleManager: 301c8a5945a301528d5cba55e4809428ef896141
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UIDeviceExtension: 53d1d2177714a3e434e755b6c0fb66678595fce4
