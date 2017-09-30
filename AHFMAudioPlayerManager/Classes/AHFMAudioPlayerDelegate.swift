@@ -16,12 +16,30 @@ public class AHFMAudioPlayerDelegate: NSObject {
     
     func playerManger(_ manager: NSObject, updateForTrackId trackId: Int, duration: TimeInterval){
         AHFMEpisode.write {
+            // assuming there's episode already in the DB since episodes will always be saved first before being played.
             try? AHFMEpisode.update(byPrimaryKey: trackId, forProperties: ["duration": duration])
         }
     }
     func playerManger(_ manager: NSObject, updateForTrackId trackId: Int, playedProgress: TimeInterval){
+        if playedProgress < 5 {
+            return
+        }
+        
         AHFMEpisodeInfo.write {
-            try? AHFMEpisodeInfo.update(byPrimaryKey: trackId, forProperties: ["lastPlayedTime": playedProgress])
+            // failed update won't throw!!
+            // so we need to manually check existence.
+            
+            if var info = AHFMEpisodeInfo.query(byPrimaryKey: trackId) {
+                info.lastPlayedTime = playedProgress
+                try? AHFMEpisodeInfo.update(model: info)
+            }else{
+                let info = AHFMEpisodeInfo(with: ["id": trackId, "lastPlayedTime": playedProgress])
+                do {
+                    try AHFMEpisodeInfo.insert(model: info)
+                }catch let error {
+                    print("playerManger updateForTrackId playedProgress error:\(error)")
+                }
+            }
         }
     }
     
