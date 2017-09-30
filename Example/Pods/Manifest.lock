@@ -1,0 +1,39 @@
+PODS:
+  - AHDataModel (0.3.0)
+  - AHFMAudioPlayerManager (0.1.0):
+    - AHFMDataCenter
+    - AHFMDataTransformers
+    - AHFMModuleManager
+    - SDWebImage
+  - AHFMDataCenter (0.1.1):
+    - AHDataModel
+    - UIDeviceExtension
+  - AHFMDataTransformers (0.1.0):
+    - SwiftyJSON
+  - AHFMModuleManager (0.1.1)
+  - SDWebImage (4.1.0):
+    - SDWebImage/Core (= 4.1.0)
+  - SDWebImage/Core (4.1.0)
+  - SwiftyJSON (3.1.4)
+  - UIDeviceExtension (0.1.0)
+
+DEPENDENCIES:
+  - AHFMAudioPlayerManager (from `../`)
+
+EXTERNAL SOURCES:
+  AHFMAudioPlayerManager:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AHDataModel: b266f3a0a302d5aa4428f11dd789a4924ff76f1b
+  AHFMAudioPlayerManager: 62d7fe7f57c5d9f48652229db06b001add7b0398
+  AHFMDataCenter: eee0c634b32328c9a34e8d7212a9fd5a6dd64aad
+  AHFMDataTransformers: eafcb87a307fbd52ccd61917fa5de1aff6a7bd53
+  AHFMModuleManager: 41a0991b7c7e186d78c6b9a4c31c1702632cdb4d
+  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  UIDeviceExtension: 53d1d2177714a3e434e755b6c0fb66678595fce4
+
+PODFILE CHECKSUM: f60122ba78864af8d833c701cbb9ee9924f7d9f1
+
+COCOAPODS: 1.3.0.beta.2

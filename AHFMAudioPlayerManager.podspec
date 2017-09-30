@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/ivsall2012/AHFMAudioPlayerManager'
+  s.homepage         = 'https://github.com/iOSModularization/AHFMAudioPlayerManager'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ivsall2012' => 'ivsall2012@gmail.com' }
-  s.source           = { :git => 'https://github.com/ivsall2012/AHFMAudioPlayerManager.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/iOSModularization/AHFMAudioPlayerManager.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
@@ -38,5 +38,8 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+    s.dependency 'AHFMModuleManager'
+s.dependency 'AHFMDataCenter'
+s.dependency 'AHFMDataTransformers'
+s.dependency 'SDWebImage'
 end
