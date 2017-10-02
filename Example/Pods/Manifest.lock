@@ -1,11 +1,13 @@
 PODS:
-  - AHDataModel (0.3.0)
-  - AHFMAudioPlayerManager (0.1.0):
+  - AHAudioPlayer (0.1.1)
+  - AHDataModel (0.3.2)
+  - AHFMAudioPlayerManager (0.2.1):
+    - AHAudioPlayer
     - AHFMDataCenter
     - AHFMDataTransformers
     - AHFMModuleManager
     - SDWebImage
-  - AHFMDataCenter (0.1.1):
+  - AHFMDataCenter (0.1.2):
     - AHDataModel
     - UIDeviceExtension
   - AHFMDataTransformers (0.1.0):
@@ -25,9 +27,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  AHDataModel: b266f3a0a302d5aa4428f11dd789a4924ff76f1b
-  AHFMAudioPlayerManager: f574957fbcef90a15a85731fd658e13ae9e2ca0d
-  AHFMDataCenter: eee0c634b32328c9a34e8d7212a9fd5a6dd64aad
+  AHAudioPlayer: d9d618d939e53916d2c2b6b6bb3726d90a40767c
+  AHDataModel: 7b7b1eb705740862fecce8413008ed137dc2c8d2
+  AHFMAudioPlayerManager: a6cb44879790dde3023633a749a6624cc455ddcc
+  AHFMDataCenter: 1ed58c19944bb34ba1ad83c20f2e1c01d4f7291f
   AHFMDataTransformers: eafcb87a307fbd52ccd61917fa5de1aff6a7bd53
   AHFMModuleManager: 301c8a5945a301528d5cba55e4809428ef896141
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4

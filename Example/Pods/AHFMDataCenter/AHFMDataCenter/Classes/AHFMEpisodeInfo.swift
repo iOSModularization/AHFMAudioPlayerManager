@@ -42,7 +42,7 @@ extension AHFMEpisodeInfo: AHDataModel {
         let localFilePath = AHDBColumnInfo(name: "localFilePath", type: .text)
         let unfinishedFilePath = AHDBColumnInfo(name: "unfinishedFilePath", type: .text)
         let fileSize = AHDBColumnInfo(name: "fileSize", type: .integer)
-        let lastPlayedTime = AHDBColumnInfo(name: "lastPlayedTime", type: .integer)
+        let lastPlayedTime = AHDBColumnInfo(name: "lastPlayedTime", type: .real)
         let downloadedProgress = AHDBColumnInfo(name: "downloadedProgress", type: .integer)
         let isDownloaded = AHDBColumnInfo(name: "isDownloaded", type: .integer)
         

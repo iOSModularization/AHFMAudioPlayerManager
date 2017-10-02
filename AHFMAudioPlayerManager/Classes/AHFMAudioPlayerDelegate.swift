@@ -10,17 +10,53 @@ import Foundation
 import SwiftyJSON
 import AHFMDataCenter
 import SDWebImage
+import AHAudioPlayer
 
 public class AHFMAudioPlayerDelegate: NSObject {
     public static let shared = AHFMAudioPlayerDelegate()
     
-    func playerManger(_ manager: NSObject, updateForTrackId trackId: Int, duration: TimeInterval){
+    override init() {
+        super.init()
+        NotificationCenter.default.addObserver(self, selector: #selector(didSwitchPlay(_:)), name: AHAudioPlayerDidSwitchPlay, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func didSwitchPlay(_ notification: Notification) {
+        if let trackId = AHAudioPlayerManager.shared.playingTrackId {
+            let history = AHFMEpisodeHistory(with: ["id": trackId, "addedAt": Date().timeIntervalSinceReferenceDate])
+            AHFMEpisodeHistory.write {
+                let ones = AHFMEpisodeHistory.insert(models: [history])
+                if ones.count > 0 {
+                    AHFMEpisodeHistory.update(models: [history])
+                }
+            }
+        }
+    }
+}
+
+extension AHFMAudioPlayerDelegate: AHAudioPlayerMangerDelegate {
+    public func playerMangerGetAlbumCover(_ player: AHAudioPlayerManager, trackId: Int, _ callback: @escaping (UIImage?) -> Void) {
+        if let ep = AHFMEpisode.query(byPrimaryKey: trackId), let showFullCover = ep.showFullCover {
+            let url = URL(string: showFullCover)
+            SDWebImageDownloader.shared().downloadImage(with: url, options: .useNSURLCache, progress: nil, completed: { (image, _, _, _) in
+                callback(image)
+            })
+            
+            
+        }
+        callback(nil)
+    }
+
+    public func playerManger(_ manager: AHAudioPlayerManager, updateForTrackId trackId: Int, duration: TimeInterval){
         AHFMEpisode.write {
             // assuming there's episode already in the DB since episodes will always be saved first before being played.
             try? AHFMEpisode.update(byPrimaryKey: trackId, forProperties: ["duration": duration])
         }
     }
-    func playerManger(_ manager: NSObject, updateForTrackId trackId: Int, playedProgress: TimeInterval){
+    public func playerManger(_ manager: AHAudioPlayerManager, updateForTrackId trackId: Int, playedProgress: TimeInterval){
         if playedProgress < 5 {
             return
         }
@@ -46,7 +82,7 @@ public class AHFMAudioPlayerDelegate: NSObject {
     /// The following five are for audio background mode
     /// Both requiring the delegate to return a dict [trackId: id, trackURL: URL]
     /// trackId is Int, trackURL is URL
-    func playerMangerGetPreviousTrackInfo(_ manager: NSObject, currentTrackId: Int) -> [String: Any] {
+    public func playerMangerGetPreviousTrackInfo(_ manager: AHAudioPlayerManager, currentTrackId: Int) -> [String: Any] {
         if let currentEp = AHFMEpisode.query(byPrimaryKey: currentTrackId) {
             let eps = AHFMEpisode.query("showId", "=", currentEp.showId).OrderBy("createdAt", isASC: true).run()
             guard eps.count > 0 else {
@@ -64,7 +100,7 @@ public class AHFMAudioPlayerDelegate: NSObject {
         
         return [:]
     }
-    func playerMangerGetNextTrackInfo(_ manager: NSObject, currentTrackId: Int) -> [String: Any]{
+    public func playerMangerGetNextTrackInfo(_ manager: AHAudioPlayerManager, currentTrackId: Int) -> [String: Any]{
         if let currentEp = AHFMEpisode.query(byPrimaryKey: currentTrackId) {
             let eps = AHFMEpisode.query("showId", "=", currentEp.showId).OrderBy("createdAt", isASC: true).run()
             guard eps.count > 0 else {
@@ -81,30 +117,20 @@ public class AHFMAudioPlayerDelegate: NSObject {
         }
         return [:]
     }
-    func playerMangerGetTrackTitle(_ player: NSObject, trackId: Int) -> String?{
+    public func playerMangerGetTrackTitle(_ player: AHAudioPlayerManager, trackId: Int) -> String?{
         if let ep = AHFMEpisode.query(byPrimaryKey: trackId) {
             return ep.title
         }else{
             return nil
         }
     }
-    func playerMangerGetAlbumTitle(_ player: NSObject, trackId: Int) -> String?{
+    public func playerMangerGetAlbumTitle(_ player: AHAudioPlayerManager, trackId: Int) -> String?{
         if let ep = AHFMEpisode.query(byPrimaryKey: trackId), let show = AHFMShow.query(byPrimaryKey: ep.showId) {
             return show.title
         }
         return nil
     }
-    func playerMangerGetAlbumCover(_ player: NSObject, trackId: Int, _ callback: @escaping (_ coverImage: UIImage?)->Void){
-        if let ep = AHFMEpisode.query(byPrimaryKey: trackId), let showFullCover = ep.showFullCover {
-            let url = URL(string: showFullCover)
-            SDWebImageDownloader.shared().downloadImage(with: url, options: .useNSURLCache, progress: nil, completed: { (image, _, _, _) in
-                callback(image)
-            })
-            
-            
-        }
-        callback(nil)
-    }
+
 }
 
 extension AHFMAudioPlayerDelegate {

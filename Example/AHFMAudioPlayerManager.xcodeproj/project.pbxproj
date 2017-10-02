@@ -271,6 +271,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AHFMAudioPlayerManager_Example/Pods-AHFMAudioPlayerManager_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AHAudioPlayer/AHAudioPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/AHDataModel/AHDataModel.framework",
 				"${BUILT_PRODUCTS_DIR}/AHFMAudioPlayerManager/AHFMAudioPlayerManager.framework",
 				"${BUILT_PRODUCTS_DIR}/AHFMDataCenter/AHFMDataCenter.framework",
@@ -282,6 +283,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AHAudioPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AHDataModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AHFMAudioPlayerManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AHFMDataCenter.framework",

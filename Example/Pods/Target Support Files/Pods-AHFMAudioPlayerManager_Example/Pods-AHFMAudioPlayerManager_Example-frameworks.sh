@@ -98,6 +98,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AHAudioPlayer/AHAudioPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AHDataModel/AHDataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AHFMAudioPlayerManager/AHFMAudioPlayerManager.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AHFMDataCenter/AHFMDataCenter.framework"
@@ -108,6 +109,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/UIDeviceExtension/UIDeviceExtension.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AHAudioPlayer/AHAudioPlayer.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AHDataModel/AHDataModel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AHFMAudioPlayerManager/AHFMAudioPlayerManager.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/AHFMDataCenter/AHFMDataCenter.framework"
