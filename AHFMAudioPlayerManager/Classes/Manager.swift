@@ -12,7 +12,7 @@ import AHFMDataCenter
 import SDWebImage
 import AHAudioPlayer
 
-public class AHFMAudioPlayerDelegate: NSObject {
+public class Manager: NSObject {
     public static let shared = AHFMAudioPlayerDelegate()
     
     override init() {
@@ -37,7 +37,7 @@ public class AHFMAudioPlayerDelegate: NSObject {
     }
 }
 
-extension AHFMAudioPlayerDelegate: AHAudioPlayerMangerDelegate {
+extension Manager: AHAudioPlayerMangerDelegate {
     public func playerMangerGetAlbumCover(_ player: AHAudioPlayerManager, trackId: Int, _ callback: @escaping (UIImage?) -> Void) {
         if let ep = AHFMEpisode.query(byPrimaryKey: trackId), let showFullCover = ep.showFullCover {
             let url = URL(string: showFullCover)
@@ -133,7 +133,7 @@ extension AHFMAudioPlayerDelegate: AHAudioPlayerMangerDelegate {
 
 }
 
-extension AHFMAudioPlayerDelegate {
+extension Manager {
     func getEpisodeURL(ep: AHFMEpisode) -> URL {
         var url: URL?
         if let epInfo = AHFMEpisodeInfo.query(byPrimaryKey: ep.id), epInfo.isDownloaded == true {
