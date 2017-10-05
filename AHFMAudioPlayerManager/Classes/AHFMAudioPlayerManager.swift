@@ -9,10 +9,11 @@
 import Foundation
 import AHFMModuleManager
 import AHAudioPlayer
+
 public struct AHFMAudioPlayerManager: AHFMModuleManager {
     public static func activate() {
-        let delegate = AHFMAudioPlayerDelegate.shared
-        AHAudioPlayerManager.shared.delegate = delegate
+        let manager = Manager.shared
+        AHAudioPlayerManager.shared.delegate = manager
     }
     
 }

@@ -13,7 +13,7 @@ import SDWebImage
 import AHAudioPlayer
 
 public class Manager: NSObject {
-    public static let shared = AHFMAudioPlayerDelegate()
+    public static let shared = Manager()
     
     override init() {
         super.init()
